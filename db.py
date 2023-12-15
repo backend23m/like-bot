@@ -15,7 +15,7 @@ def is_user(chat_id: str) -> bool:
     data = read()
     return chat_id in data.keys()
 
-def user(chat_id: str) -> bool:
+def get_user(chat_id: str) -> bool:
     data = read()
     if not is_user(chat_id):
         return False
@@ -27,7 +27,7 @@ def add(chat_id: str) -> bool:
     data.setdefault(chat_id, {'likes': 0, 'dislikes': 0}) 
     save(data)
 
-def update(chat_id: str, is_like=False, is_dislike=False, clear=False) -> bool:
+def update_db(chat_id: str, is_like=False, is_dislike=False, clear=False) -> bool:
     if not is_user(chat_id):
         return False
 

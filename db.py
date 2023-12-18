@@ -27,7 +27,9 @@ def add(chat_id: str) -> bool:
     data.setdefault(chat_id, {'likes': 0, 'dislikes': 0, 'inline_likes': 0, 'inline_dislikes': 0}) 
     save(data)
 
-def update_db(chat_id: str, is_like=False, is_dislike=False, clear=False) -> bool:
+def update_db(
+    chat_id: str, is_like=False, is_dislike=False, clear=False,
+    is_inline_like=False, is_inline_dislike=False, inline_clear=False) -> bool:
     if not is_user(chat_id):
         return False
 
@@ -40,6 +42,13 @@ def update_db(chat_id: str, is_like=False, is_dislike=False, clear=False) -> boo
     elif clear:
         data[chat_id]['likes'] = 0
         data[chat_id]['dislikes'] = 0
+    elif is_inline_like:
+        data[chat_id]['inline_likes'] += 1
+    elif is_inline_dislike:
+        data[chat_id]['inline_dislikes'] += 1
+    elif inline_clear:
+        data[chat_id]['inline_likes'] = 0
+        data[chat_id]['inline_dislikes'] = 0
 
     save(data)
     return data[chat_id]

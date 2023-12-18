@@ -81,50 +81,53 @@ def cl(update: Update, context: CallbackContext):
 def inline_like(update: Update, context: CallbackContext):
     user = update.effective_user
     bot = context.bot
-    print('inlike like')
 
-    # if is_user(str(user.id)):
-    #     update_db(str(user.id), is_like=True)
-    #     db_user = get_user(str(user.id))
-    #     bot.send_message(   
-    #         user.id, 
-    #         f'likes: {db_user["likes"]}\ndislikes: {db_user["dislikes"]}', 
-    #         reply_markup=start_keyboard)
-    #     return
+    if is_user(str(user.id)):
+        update_db(str(user.id), is_inline_like=True)
+        db_user = get_user(str(user.id))
+        bot.edit_message_text(   
+            chat_id=user.id, 
+            message_id=update.callback_query.message.message_id,
+            text=f'likes: {db_user["inline_likes"]}\ndislikes: {db_user["inline_dislikes"]}',
+            reply_markup=start_inline_keyboard
+            )
+        return
 
-    # add(str(user.id))
-    # bot.sendMessage(user.id, 'Asslomu alaykum.', reply_markup=start_keyboard)
+    add(str(user.id))
+    bot.sendMessage(user.id, 'Asslomu alaykum.', reply_markup=start_keyboard)
 
 def inline_dislike(update: Update, context: CallbackContext):
     user = update.effective_user
     bot = context.bot
-    print('inlike dislike')
 
-    # if is_user(str(user.id)):
-    #     update_db(str(user.id), is_dislike=True)
-    #     db_user = get_user(str(user.id))
-    #     bot.send_message(   
-    #         user.id, 
-    #         f'likes: {db_user["likes"]}\ndislikes: {db_user["dislikes"]}', 
-    #         reply_markup=start_keyboard)
-    #     return
+    if is_user(str(user.id)):
+        update_db(str(user.id), is_inline_dislike=True)
+        db_user = get_user(str(user.id))
+        bot.edit_message_text(   
+            chat_id=user.id, 
+            message_id=update.callback_query.message.message_id,
+            text=f'likes: {db_user["inline_likes"]}\ndislikes: {db_user["inline_dislikes"]}', 
+            reply_markup=start_inline_keyboard
+        )
+        return
 
-    # add(str(user.id))
-    # bot.sendMessage(user.id, 'Asslomu alaykum.', reply_markup=start_keyboard)
+    add(str(user.id))
+    bot.sendMessage(user.id, 'Asslomu alaykum.', reply_markup=start_keyboard)
 
 def inline_cl(update: Update, context: CallbackContext):
     user = update.effective_user
     bot = context.bot
-    print('inlike clear')
 
-    # if is_user(str(user.id)):
-    #     update_db(str(user.id), clear=True)
-    #     db_user = get_user(str(user.id))
-    #     bot.send_message(   
-    #         user.id, 
-    #         f'likes: {db_user["likes"]}\ndislikes: {db_user["dislikes"]}', 
-    #         reply_markup=start_keyboard)
-    #     return
+    if is_user(str(user.id)):
+        update_db(str(user.id), inline_clear=True)
+        db_user = get_user(str(user.id))
+        bot.edit_message_text(   
+            chat_id=user.id, 
+            message_id=update.callback_query.message.message_id, 
+            text=f'likes: {db_user["inline_likes"]}\ndislikes: {db_user["inline_dislikes"]}', 
+            reply_markup=start_inline_keyboard
+        )
+        return
 
-    # add(str(user.id))
-    # bot.sendMessage(user.id, 'Asslomu alaykum.', reply_markup=start_keyboard)
+    add(str(user.id))
+    bot.sendMessage(user.id, 'Asslomu alaykum.', reply_markup=start_keyboard)

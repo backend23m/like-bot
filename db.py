@@ -24,7 +24,7 @@ def get_user(chat_id: str) -> bool:
 
 def add(chat_id: str) -> bool:
     data = read()
-    data.setdefault(chat_id, {'likes': 0, 'dislikes': 0}) 
+    data.setdefault(chat_id, {'likes': 0, 'dislikes': 0, 'inline_likes': 0, 'inline_dislikes': 0}) 
     save(data)
 
 def update_db(chat_id: str, is_like=False, is_dislike=False, clear=False) -> bool:

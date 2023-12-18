@@ -1,10 +1,9 @@
 from settings import TOKEN
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 from handlers import (
     start,
-    like,
-    dislike,
-    cl,
+    like, dislike, cl,
+    inline_like, inline_dislike, inline_cl,
 )
 
 
@@ -40,6 +39,26 @@ def main():
         handler=MessageHandler(
             filters=Filters.text("🆑"),
             callback=cl
+        )
+    )
+
+    # add callback query handlers
+    dispatcher.add_handler(
+        handler=CallbackQueryHandler(
+            callback=inline_dislike,
+            pattern='dislike'
+        )
+    )
+    dispatcher.add_handler(
+        handler=CallbackQueryHandler(
+            callback=inline_like,
+            pattern='like'
+        )
+    )
+    dispatcher.add_handler(
+        handler=CallbackQueryHandler(
+            callback=inline_cl,
+            pattern='clear'
         )
     )
 

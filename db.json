@@ -1,34 +1,8 @@
 {
     "1258594598": {
-        "likes": 2,
-        "dislikes": 2
-    },
-    "1478627019": {
         "likes": 0,
-        "dislikes": 0
-    },
-    "927181585": {
-        "likes": 7,
-        "dislikes": 2
-    },
-    "5064798723": {
-        "likes": 0,
-        "dislikes": 0
-    },
-    "6082673969": {
-        "likes": 4,
-        "dislikes": 5
-    },
-    "5826220976": {
-        "likes": 0,
-        "dislikes": 0
-    },
-    "5451611180": {
-        "likes": 1,
-        "dislikes": 0
-    },
-    "5466480235": {
-        "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "inline_likes": 0,
+        "inline_dislikes": 0
     }
 }
